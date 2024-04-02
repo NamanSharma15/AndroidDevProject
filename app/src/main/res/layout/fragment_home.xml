@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.HomeFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@drawable/bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingTop="30dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/p_img_back"
+                android:padding="3dp"
+                android:src="@drawable/profile_def" />
+
+            <LinearLayout
+                android:paddingLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="13dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.15"
+                    android:text="Hello, "
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="117dp"
+                    tools:layout_editor_absoluteY="44dp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.15"
+                    android:text="Robin Decuza"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="117dp"
+                    tools:layout_editor_absoluteY="71dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/shadow"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp"
+        android:paddingRight="10dp">
+
+
+        <ImageView
+            android:id="@+id/imageButton2"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/search" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textSize="18sp"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:paddingLeft="8dp"
+            android:hint="Search Symptoms for Diagnosis"
+            tools:layout_editor_absoluteX="100dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="190dp"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/icon1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Enter How Much Cookies You Want"
+                    android:src="@drawable/icon1"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/ellipse"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Book \n Appointment"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="18dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/icon2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Enter How Much Cookies You Want"
+                    android:src="@drawable/icon2"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/ellipse"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chat with \n Doctor"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="22dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/icon3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Enter How Much Cookies You Want"
+                    android:src="@drawable/icon3"
+                    android:layout_marginLeft="25dp"
+                    android:background="@drawable/ellipse"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View \n Appointment"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:paddingTop="10dp"
+                    android:layout_marginLeft="11dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/icon4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Enter How Much Cookies You Want"
+                    android:src="@drawable/icon4"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/ellipse"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get \n Medicine"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="17dp">
+            <TextView
+                android:id="@+id/medicine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="11dp"
+                android:text="Medicine Reminders"
+                android:letterSpacing="0.15"
+                android:textColor="#000000"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+            <ImageButton
+                android:id="@+id/plus1"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Enter How Much Cookies You Want"
+                android:src="@drawable/plus_icon"
+                android:layout_marginLeft="90dp"
+                android:paddingTop="4dp"
+                android:background="#00000000"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+            <ListView
+                android:id="@+id/reminderList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="15dp"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="10.0sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="17dp">
+            <TextView
+                android:id="@+id/doctors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="11dp"
+                android:text="Best Rated Doctors"
+                android:letterSpacing="0.15"
+                android:textColor="#000000"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+            <ImageButton
+                android:id="@+id/favr"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Enter How Much Cookies You Want"
+                android:src="@drawable/star"
+                android:layout_marginLeft="90dp"
+                android:paddingTop="4dp"
+                android:background="#00000000"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
