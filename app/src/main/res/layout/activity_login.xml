@@ -4,15 +4,178 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@color/sblues">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher_foreground"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:paddingRight="20dp"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is the login page"
-        android:textSize="20sp"
+        android:text="Medify"
+        android:textSize="40sp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="560dp"
+            android:layout_marginTop="200dp"
+            android:background="@drawable/loginshadow">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/source_sans"
+                    android:letterSpacing="0.13"
+                    android:paddingTop="20dp"
+                    android:text="Login"
+                    android:textColor="@color/black"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/loginbg">
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/lentry"
+                    android:paddingBottom="10dp"
+                    >
+
+                    <EditText
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="5dp"
+                        android:id="@+id/name_login"
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/name_hint"
+                        android:inputType="textEmailAddress"
+                        android:minHeight="48dp"
+                        android:paddingLeft="8dp"
+                        android:textSize="20sp"
+                        tools:layout_editor_absoluteX="100dp" />
+                </FrameLayout>
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:background="@drawable/loginbg"
+                    android:layout_marginTop="20dp">
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/lentry"
+                        android:paddingBottom="10dp"
+                        >
+
+                        <EditText
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="5dp"
+                            android:id="@+id/password_login"
+                            android:layout_width="320dp"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="@string/pass_hint"
+                            android:inputType="textPassword"
+                            android:minHeight="48dp"
+                            android:paddingLeft="8dp"
+                            android:textSize="20sp"
+                            tools:layout_editor_absoluteX="100dp" />
+                    </FrameLayout>
+                </FrameLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/loginbg"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:layout_marginTop="30dp"
+                    >
+                    <Button
+                        android:id="@+id/login_button"
+                        android:onClick="onLogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="25dp"
+                        android:text="Login"
+                        android:textFontWeight="800"
+                        android:fontFamily="@font/source_sans"
+                        android:textAllCaps="false"
+                        android:textSize="23sp"
+                        android:backgroundTint="#00000000"
+                        android:background="#00000000"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="New to Medics"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/source_sans"
+                        android:textColor="#36436f"/>
+                    <TextView
+                        android:id="@+id/to_sign"
+                        android:textAllCaps="false"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/signupbutoon"
+                        android:clickable="true"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/source_sans"
+                        android:backgroundTint="#00000000"
+                        android:background="#00000000"
+                        android:textColor="#36436f"/>
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

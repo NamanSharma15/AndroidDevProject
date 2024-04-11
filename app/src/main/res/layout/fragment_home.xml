@@ -43,7 +43,7 @@
                     tools:layout_editor_absoluteY="44dp" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/name_home_page"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:letterSpacing="0.15"
@@ -259,5 +259,4 @@
                 />
         </LinearLayout>
     </LinearLayout>
-
 </FrameLayout>
