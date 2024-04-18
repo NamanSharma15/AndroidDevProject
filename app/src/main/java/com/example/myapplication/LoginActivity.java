@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         String passUser = pass_login.getText().toString().trim();
         database  = FirebaseDatabase.getInstance();
         reference = database.getReference("users");
-        Toast.makeText(LoginActivity.this,"Working",Toast.LENGTH_LONG).show();
+
         Query checkUserDatabase = reference.orderByChild("name").equalTo(nameUser);
         checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

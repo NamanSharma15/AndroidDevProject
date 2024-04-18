@@ -38,7 +38,8 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="560dp"
+            android:layout_height="900dp"
+            android:scrollbars="none"
             android:layout_marginTop="200dp"
             android:background="@drawable/loginshadow">
 

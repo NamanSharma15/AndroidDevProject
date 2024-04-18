@@ -8,12 +8,14 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+
 import com.example.myapplication.databinding.ActivityMainBinding;
 import com.example.myapplication.fragments.ConsultFragment;
 import com.example.myapplication.fragments.HomeFragment;
 import com.example.myapplication.fragments.MedFragment;
 import com.example.myapplication.fragments.ProfileFragment;
-import com.example.myapplication.fragments.SettingsFragment;
+import com.example.myapplication.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -44,8 +46,8 @@ public class MainActivity extends AppCompatActivity{
                 case R.id.consult:
                     replaceFragment(new ConsultFragment());
                     break;
-                case R.id.set:
-                    replaceFragment(new SettingsFragment());
+                case R.id.search_page:
+                    replaceFragment(new SearchFragment());
                     break;
                 case R.id.med:
                     replaceFragment(new MedFragment());
@@ -59,5 +61,13 @@ public class MainActivity extends AppCompatActivity{
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout,fragment);
         fragmentTransaction.commit();
+    }
+    public void onLogOut(View view){
+        SharedPreferences sharedPreferences =  getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("email");
+        editor.apply();
+        Intent intent = new Intent(MainActivity.this,SignupActivity.class);
+        startActivity(intent);
     }
 }
