@@ -1,5 +1,4 @@
 package com.example.myapplication.adapters;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +10,10 @@ import com.example.myapplication.R;
 import com.example.myapplication.models.MedicineReminders;
 
 import java.util.List;
-
 public class ReminderListAdapter extends ArrayAdapter<MedicineReminders> {
-
     public ReminderListAdapter(Context context, List<MedicineReminders> reminders) {
         super(context, 0,reminders);
     }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         MedicineReminders reminder = getItem(position);
@@ -27,7 +23,7 @@ public class ReminderListAdapter extends ArrayAdapter<MedicineReminders> {
         TextView name = convertView.findViewById(R.id.medi_name);
         TextView time = convertView.findViewById(R.id.medi_time);
         name.setText(reminder.getName());
-        time.setText(reminder.getTime());
+        time.setText(reminder.getReminders());
         return convertView;
     }
 }

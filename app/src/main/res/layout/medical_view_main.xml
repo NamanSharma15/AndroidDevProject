@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     >
     <androidx.cardview.widget.CardView
-        android:layout_width="370dp"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:background="@drawable/shadow"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -17,11 +17,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:padding="20dp">
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="5dp">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/med3"/>
+            android:src="@drawable/med3"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,16 +36,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Drisdol"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:textStyle="bold"
+            android:id="@+id/main_med1"
             />
             <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Once a day"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
+            android:id="@+id/main_time1"
             />
         </LinearLayout>
         <CheckBox
@@ -49,8 +55,9 @@
             android:layout_marginLeft="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleY="1.85"
-            android:scaleX="1.85"
+            android:scaleY="1.5"
+            android:scaleX="1.5"
+            android:checked="true"
             />
     </LinearLayout>
     <LinearLayout
@@ -59,38 +66,33 @@
         android:gravity="center_horizontal"
         android:layout_marginBottom="15dp">
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/med_info"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/med_info"
             android:background="#00000000"
             android:scaleX="0.8"
             android:scaleY="0.8"
-            android:layout_marginRight="35dp"
-            >
+            android:layout_marginRight="30dp"
+            android:contentDescription="Enter How Much Cookies You Want"
+            />
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/med_edit"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/edit"
             android:background="#00000000"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="5dp"
-            >
+            android:layout_marginRight="30dp"
+            android:contentDescription="Enter How Much Cookies You Want"
+            />
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/date_p"
-            android:background="#00000000"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
-            android:layout_marginRight="35dp"
-            >
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/med_rm"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/remove"
             android:background="#00000000"
-            >
-        </ImageButton>
+            android:contentDescription="Enter How Much Cookies You Want"
+            />
     </LinearLayout>
     </LinearLayout>
     </androidx.cardview.widget.CardView>

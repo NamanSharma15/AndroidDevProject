@@ -12,9 +12,6 @@
         android:icon="@drawable/consult"
         android:id="@+id/consult"/>
     <item android:title=""
-        android:icon="@drawable/search_bar"
-        android:id="@+id/search_page"/>
-    <item android:title=""
         android:icon="@drawable/profile_icon_style"
         android:id="@+id/profile"/>
 </menu>

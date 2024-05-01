@@ -138,20 +138,19 @@
                         android:background="@drawable/sentry"
                         android:paddingBottom="10dp"
                         >
-
-                        <EditText
+                        <TextView
+                            android:clickable="true"
                             android:paddingHorizontal="20dp"
                             android:paddingVertical="5dp"
+                            android:layout_marginTop="5dp"
                             android:id="@+id/dob_signup"
                             android:layout_width="320dp"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:hint="@string/dob_hint"
-                            android:inputType="date"
+                            android:text="@string/dob_hint"
                             android:minHeight="48dp"
                             android:paddingLeft="8dp"
-                            android:textSize="20sp"
-                            tools:layout_editor_absoluteX="100dp" />
+                            android:textSize="20sp" />
                     </FrameLayout>
                 </FrameLayout>
                 <FrameLayout
