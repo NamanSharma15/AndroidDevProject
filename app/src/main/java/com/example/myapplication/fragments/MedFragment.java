@@ -70,7 +70,6 @@ public class  MedFragment extends Fragment {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     MedicineReminders mer= dataSnapshot.getValue(MedicineReminders.class);
                     reminders.add(mer);
-
                 }
                 String json = gson.toJson(reminders);
                 editor.putString("medicine_data",json);

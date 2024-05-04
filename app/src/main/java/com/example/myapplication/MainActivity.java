@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -18,11 +19,12 @@ import com.example.myapplication.fragments.ConsultFragment;
 import com.example.myapplication.fragments.HomeFragment;
 import com.example.myapplication.fragments.MedFragment;
 import com.example.myapplication.fragments.ProfileFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity{
-    private static final int PERMISSION_REQUEST_NOT_CODE = 100;
     ActivityMainBinding binding;
     String notLogined;
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +33,11 @@ public class MainActivity extends AppCompatActivity{
         int value = -1;
         if(b != null)
             value = b.getInt("tab");
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.POST_NOTIFICATIONS},
-                    PERMISSION_REQUEST_NOT_CODE);
-        }
         SharedPreferences sharedPreferences =  getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+        if(sharedPreferences.getString("spec",null)!=null){
+            Intent intent = new Intent(MainActivity.this,DoctorMainActivity.class);
+            startActivity(intent);
+        }
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         notLogined = sharedPreferences.getString("email", null);
@@ -44,7 +45,6 @@ public class MainActivity extends AppCompatActivity{
         Intent intent = new Intent(MainActivity.this,SignupActivity.class);
         startActivity(intent);
         }
-        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).commit();
         if(value==2){
         replaceFragment(new MedFragment());
         binding.bottomNavigationBar.setSelectedItemId(R.id.med);
@@ -74,13 +74,5 @@ public class MainActivity extends AppCompatActivity{
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout,fragment);
         fragmentTransaction.commit();
-    }
-    public void onLogOut(View view){
-        SharedPreferences sharedPreferences =  getSharedPreferences("PREFERENCE", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove("email");
-        editor.apply();
-        Intent intent = new Intent(MainActivity.this,SignupActivity.class);
-        startActivity(intent);
     }
 }

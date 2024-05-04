@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title=""
+        android:icon="@drawable/book_sele"
+        android:id="@+id/book_a"/>
+    <item android:title=""
+        android:icon="@drawable/chat_sele"
+        android:id="@+id/chat_n"/>
+    <item android:title=""
+        android:icon="@drawable/profile_icon_style"
+        android:id="@+id/profile_d"/>
+</menu>

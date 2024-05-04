@@ -1,66 +1,75 @@
 package com.example.myapplication.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
-
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.ListView;
 import com.example.myapplication.R;
+import com.example.myapplication.adapters.UserChatAdapter;
+import com.example.myapplication.models.Doctors;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.gson.Gson;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ConsultFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ConsultFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    ListView listView;
+    FirebaseUser user;
+    FirebaseStorage storage;
+    StorageReference reference;
+    FirebaseDatabase database;
+    DatabaseReference dreference;
+    Activity a;
     public ConsultFragment() {
-        // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ConsultFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ConsultFragment newInstance(String param1, String param2) {
-        ConsultFragment fragment = new ConsultFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_consult, container, false);
+        a = getActivity();
+        View rootView =  inflater.inflate(R.layout.fragment_consult, container, false);
+        listView = rootView.findViewById(R.id.user_conlist);
+        Gson gson = new Gson();
+        List<Pair<String,Doctors>> doctors = new ArrayList<>();
+        storage = FirebaseStorage.getInstance();
+        reference = storage.getReference();
+        database  = FirebaseDatabase.getInstance();
+        dreference = database.getReference("doctors");
+        dreference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                Doctors doctor =   dataSnapshot.child("info").getValue(Doctors.class);
+                String id = dataSnapshot.child("id").getValue(String.class);
+                doctors.add(new Pair<>(id,doctor));
+                }
+                inflateReminder(doctors);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return  rootView;
+    }
+    public void inflateReminder(List<Pair<String,Doctors>> chatrooms){
+        UserChatAdapter adapter = new UserChatAdapter(getContext(),chatrooms,getActivity(),reference);
+        listView.setAdapter(adapter);
     }
 }

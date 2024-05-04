@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
     android:background="@color/sblues">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,7 +41,8 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="900dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="100dp"
             android:scrollbars="none"
             android:layout_marginTop="200dp"
             android:background="@drawable/loginshadow">
@@ -87,11 +91,11 @@
                     <EditText
                         android:paddingHorizontal="20dp"
                         android:paddingVertical="5dp"
-                        android:id="@+id/name_login"
+                        android:id="@+id/email_login"
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:hint="@string/name_hint"
+                        android:hint="@string/email_hint"
                         android:inputType="textEmailAddress"
                         android:minHeight="48dp"
                         android:paddingLeft="8dp"
@@ -175,8 +179,25 @@
                         android:background="#00000000"
                         android:textColor="#36436f"/>
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:clickable="true"
+                        android:id="@+id/dlogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/doctorl"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/source_sans"
+                        android:textColor="#36436f"/>
+                </LinearLayout>
             </LinearLayout>
         </FrameLayout>
     </FrameLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

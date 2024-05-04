@@ -10,6 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,17 +23,26 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText name_login,pass_login;
-    TextView signup_redirect;
+    EditText email_login,pass_login;
+    TextView signup_redirect,d_redirect;
     FirebaseDatabase database;
     DatabaseReference reference;
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        name_login = findViewById(R.id.name_login);
+        email_login = findViewById(R.id.email_login);
         pass_login = findViewById(R.id.password_login);
         signup_redirect = findViewById(R.id.to_sign);
+        d_redirect = findViewById(R.id.dlogin);
+        d_redirect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this,DoctorLoginActivity.class);
+                startActivity(intent);
+            }
+        });
         signup_redirect.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -43,19 +57,19 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     public Boolean validateName(){
-        String val = name_login.getText().toString();
+        String val = email_login.getText().toString();
         if (val.isEmpty()){
-            name_login.setError("Email cannot be empty");
+            email_login.setError("Email cannot be empty");
             return false;
         } else {
-            name_login.setError(null);
+            email_login.setError(null);
             return true;
         }
     }
     public Boolean validatePass(){
         String val = pass_login.getText().toString();
         if (val.isEmpty()){
-            pass_login.setError("Email cannot be empty");
+            pass_login.setError("Password cannot be empty");
             return false;
         } else {
             pass_login.setError(null);
@@ -63,38 +77,50 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     public void checkUser(){
-        String nameUser = name_login.getText().toString().trim();
+        String emailUser = email_login.getText().toString().trim();
         String passUser = pass_login.getText().toString().trim();
         database  = FirebaseDatabase.getInstance();
         reference = database.getReference("users");
-
-        Query checkUserDatabase = reference.orderByChild("name").equalTo(nameUser);
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.signInWithEmailAndPassword(emailUser, passUser)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            if(user.isEmailVerified()){
+                            setUserLogin(user);
+                            }else{
+                                Toast.makeText(LoginActivity.this, "Email is not Verified",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Invalid Credentials.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+    private void setUserLogin(FirebaseUser user){
+        String id = user.getUid();
+        Query checkUserDatabase = reference.orderByChild("id").equalTo(id);
         checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    name_login.setError(null);
-                    String passwordFromDB = snapshot.child(nameUser).child("password").getValue(String.class);
-                    if(passwordFromDB.equals(passUser)){
-                        pass_login.setError(null);
-                        String name = snapshot.child(nameUser).child("name").getValue(String.class);
-                        String dob = snapshot.child(nameUser).child("dob").getValue(String.class);
-                        String email = snapshot.child(nameUser).child("email").getValue(String.class);
-                        SharedPreferences sharedPreferences =  getSharedPreferences("PREFERENCE", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("name",name);
-                        editor.putString("dob",dob);
-                        editor.putString("email",email);
-                        editor.apply();
-                        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                        startActivity(intent);
-                    }else{
-                        pass_login.setError("Invalid Credentials");
-                        pass_login.requestFocus();
-                    }
+                    String name = snapshot.child(id).child("name").getValue(String.class);
+                    String dob = snapshot.child(id).child("dob").getValue(String.class);
+                    String email = user.getEmail();
+                    SharedPreferences sharedPreferences =  getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("name",name);
+                    editor.putString("dob",dob);
+                    editor.putString("email",email);
+                    editor.apply();
+                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                    startActivity(intent);
                 }else{
-                    name_login.setError("User Doesn't Exists");
-                    name_login.requestFocus();
+                    Toast.makeText(LoginActivity.this,"Try using Doctor Login",Toast.LENGTH_LONG).show();
                 }
             }
             @Override

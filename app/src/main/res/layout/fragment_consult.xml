@@ -3,12 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ConsultFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="20dp"
+        android:paddingHorizontal="30dp"
+        android:gravity="center">
+    <androidx.cardview.widget.CardView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:elevation="12dp"
+        android:id="@+id/view2"
+       app:cardCornerRadius="30dp"
+        android:layout_centerHorizontal="true">
+        <ImageView
+            android:layout_height="70dp"
+            android:layout_width="match_parent"
+            android:id="@+id/profile_pic_h"
+            android:src="@drawable/consult_up"
+            android:scaleType="centerCrop"/>
+    </androidx.cardview.widget.CardView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Consult with Experts"
+        android:textSize="25sp"
+        android:textColor="@color/black"/>
+    </LinearLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_conlist"
+        android:divider="@null"
+        />
+    </LinearLayout>
 </FrameLayout>
