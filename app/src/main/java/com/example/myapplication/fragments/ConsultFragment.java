@@ -72,4 +72,5 @@ public class ConsultFragment extends Fragment {
         UserChatAdapter adapter = new UserChatAdapter(getContext(),chatrooms,getActivity(),reference);
         listView.setAdapter(adapter);
     }
+
 }

@@ -208,7 +208,8 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="15dp"
                 android:divider="@android:color/transparent"
-                android:dividerHeight="10.0sp" />
+                android:dividerHeight="10.0sp"
+                android:scrollbars="none"/>
         </FrameLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -220,7 +221,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:paddingTop="11dp"
-                android:text="Best Rated Doctors"
+                android:text="Your Appointments"
                 android:letterSpacing="0.15"
                 android:textColor="#000000"
                 android:textSize="19sp"
@@ -237,5 +238,20 @@
                 android:background="#00000000"
                 />
         </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            android:id="@+id/a_home_frame">
+            <ListView
+                android:id="@+id/appointmentList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="15dp"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="10.0sp"
+                android:scrollbars="none"/>
+        </FrameLayout>
     </LinearLayout>
 </FrameLayout>

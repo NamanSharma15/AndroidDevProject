@@ -31,8 +31,9 @@ public class MainActivity extends AppCompatActivity{
         getSupportActionBar().hide();
         Bundle b = getIntent().getExtras();
         int value = -1;
-        if(b != null)
+        if(b != null){
             value = b.getInt("tab");
+        }
         SharedPreferences sharedPreferences =  getSharedPreferences("PREFERENCE", MODE_PRIVATE);
         if(sharedPreferences.getString("spec",null)!=null){
             Intent intent = new Intent(MainActivity.this,DoctorMainActivity.class);

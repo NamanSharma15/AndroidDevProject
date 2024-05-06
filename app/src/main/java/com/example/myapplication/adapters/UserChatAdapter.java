@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myapplication.BookAppointmentActivity;
 import com.example.myapplication.ChatDoctorActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Doctors;
@@ -53,7 +54,24 @@ public class UserChatAdapter extends ArrayAdapter<Pair<String,Doctors>> {
                 startChat(room.getName(),room.getSpeciality(),id);
             }
         });
+        Button b_button = convertView.findViewById(R.id.app_u);
+        b_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bookA(room.getName(),room.getSpeciality(),id);
+            }
+        });
 ;       return convertView;
+    }
+    private  void bookA(String name,String spec,String id){
+        SharedPreferences sharedPreferences = a.getSharedPreferences("PREFERENCE", a.MODE_PRIVATE);
+        SharedPreferences.Editor editor =  sharedPreferences.edit();
+        editor.putString("dname",name);
+        editor.putString("dspec",spec);
+        editor.putString("did",id);
+        editor.apply();
+        Intent intent = new Intent(getContext(), BookAppointmentActivity.class);
+        a.startActivity(intent);
     }
     private  void  startChat(String name,String spec,String id){
         SharedPreferences sharedPreferences = a.getSharedPreferences("PREFERENCE", a.MODE_PRIVATE);

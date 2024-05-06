@@ -77,6 +77,12 @@ public class ChatDoctorActivity extends AppCompatActivity {
             }
         });
         updateMessages();
+        findViewById(R.id.backinfo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Back();
+            }
+        });
     }
     private  void  updateMessages(){
         dreference.orderByChild("timemills").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -120,5 +126,8 @@ public class ChatDoctorActivity extends AppCompatActivity {
                 Picasso.get().load(uri).into(profile_pic);
             }
         });
+    }
+    public void Back(){
+        finish();
     }
 }
