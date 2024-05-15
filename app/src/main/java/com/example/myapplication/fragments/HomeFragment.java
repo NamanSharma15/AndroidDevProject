@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,7 @@ import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List;import android.util.Pair;
 
 public class HomeFragment extends Fragment {
     ListView listView;
@@ -95,7 +96,7 @@ public class HomeFragment extends Fragment {
         storage = FirebaseStorage.getInstance();
         reference  = storage.getReference();
         String imguri =  a.getSharedPreferences("PREFERENCE", a.MODE_PRIVATE).getString("imageuri",null);
-        List<Appointment> appointments = new ArrayList<>();
+        List<Pair<String,Appointment>> appointments = new ArrayList<>();
         Query remr = dreference.orderByChild("userId").equalTo(user.getUid());
         loaderDilog.startDilog();
         remr.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -103,8 +104,9 @@ public class HomeFragment extends Fragment {
                 public void onDataChange(DataSnapshot snapshot) {
                     if(snapshot.exists()){
                         for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            Appointment mer= dataSnapshot.getValue(Appointment.class);
-                            appointments.add(mer);
+                            String id = dataSnapshot.getKey();
+                            Appointment appointment  = dataSnapshot.getValue(Appointment.class);
+                            appointments.add(new Pair(id,appointment));
                         }
                     }
                     if(appointments.size()==0){
@@ -134,7 +136,7 @@ public class HomeFragment extends Fragment {
         ReminderListAdapter adapter = new ReminderListAdapter(getContext(),reminders);
         listView.setAdapter(adapter);
     }
-    public void inflateReminder2(List<Appointment> reminders){
+    public void inflateReminder2 (List<Pair<String,Appointment>> reminders){
        AppintmentUserAdapter adapter = new AppintmentUserAdapter(getContext(),reminders);
        listView2.setAdapter(adapter);
     }

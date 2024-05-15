@@ -68,12 +68,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Not Approved"
                     android:id="@+id/isapp"
+                    />
+                <ImageButton
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/remapp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/remove"
+                    android:background="#00000000"
+                    android:contentDescription="Enter How Much Cookies You Want"
                     />
             </LinearLayout>
         </LinearLayout>

@@ -218,5 +218,4 @@ public class DoctorJoin extends AppCompatActivity {
         Toast.makeText(DoctorJoin.this, s,
                 Toast.LENGTH_SHORT).show();
     }
-
 }
